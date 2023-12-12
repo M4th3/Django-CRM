@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationFofrom 
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 
@@ -16,7 +16,7 @@ class SignUpForm(UserCreationForm):
 	def __init__(self, *args, **kwargs):
 		super(SignUpForm, self).__init__(*args, **kwargs)
 
-		self.fields['username'].widget.attrs['class'] = 'form-control'
+		self.fields['username'].widget.attrs['class'] = 'form-control' #Definindo os atributos dos campos da classe User
 		self.fields['username'].widget.attrs['placeholder'] = 'User Name'
 		self.fields['username'].label = ''
 		self.fields['username'].help_text = '<span class="form-text text-muted"><small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small></span>'
