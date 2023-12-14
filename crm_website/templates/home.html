@@ -5,12 +5,40 @@
 
 {% if user.is_authenticated %}
     <h1>Records</h1>
-    {% if records %}
-    {% for record in records %}
-    {{ record }}<br>
-    {% endfor %}
-    {% endif %}
-{% else %}  
+    <br>
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Address</th>
+          <th scope="col">City</th>
+          <th scope="col">State</th>
+          <th scope="col">Zipcode</th>
+          <th scope="col">Created At</th>
+          <th scope="col">Id</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            {% if records %}
+            {% for record in records %}
+            <td>{{ record }}</td>
+            <td>{{ record.email }}</td>
+            <td>{{ record.phone }}</td>
+            <td>{{ record.address }}</td>
+            <td>{{ record.city }}</td>
+            <td>{{ record.state }}</td>
+            <td>{{ record.zipcode }}</td>
+            <td>{{ record.created_at }}</td>
+            <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+          </tr>
+          {% endfor %}
+          {% endif %}
+      </tbody>
+</table>
+{% else %}
 <h1>Login!!</h1>
 <br>  
 <div class="col-md-6 offset-md-3"></div>
@@ -27,8 +55,8 @@
           </form>
     </form>
 </div>
-{% endif %}
 
+{% endif %}
 
 
 
